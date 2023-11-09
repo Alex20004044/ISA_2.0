@@ -6,7 +6,7 @@ using Emgu.CV.Structure;
 namespace ISA_2
 {
 
-    public class Core
+    public class LegacyCode
     {
         VideoCapture videoCapture = new VideoCapture();
         CascadeClassifier defaultClassifier = new CascadeClassifier(@"D:\Data\Projects\ISA 2.0\ISA 2\haarcascade_frontalface_default.xml");
@@ -19,13 +19,13 @@ namespace ISA_2
         float minDistance = 40;
 
         int updateDelay = 200;
-        public Core()
+        public LegacyCode()
         {
             videoCapture.Set(Emgu.CV.CvEnum.CapProp.FrameWidth, frameWidth);
             videoCapture.Set(Emgu.CV.CvEnum.CapProp.FrameHeight, frameHeight);
         }
 
-        ~Core()
+        ~LegacyCode()
         {
             videoCapture?.Dispose();
         }
