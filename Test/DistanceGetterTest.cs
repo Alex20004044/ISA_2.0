@@ -4,10 +4,10 @@ using System.Text;
 
 namespace ISA_2.Test
 {
-    public class DistanceGetterTest : IDistanceGetter
+    public class DistanceGetterTest : IDistanceSensor
     {
-        float _distance = 0;
-
+        float _distance;
+        int i = 0;
         public DistanceGetterTest(float distance)
         {
             SetDistance(distance);
@@ -19,7 +19,8 @@ namespace ISA_2.Test
         }
         public float GetDistance()
         {
-            return MathF.Sin(DateTime.Now.Second % 360) * _distance;
+            i++;
+            return 10 * MathF.Sin(i / 10f) + _distance;
         }
     }
 }

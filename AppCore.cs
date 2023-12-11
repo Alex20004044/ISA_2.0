@@ -4,17 +4,17 @@ namespace ISA_2
 {
     public class AppCore
     {
-        IDistanceGetter _distanceGetter;
+        IDistanceSensor _distanceGetter;
         IReaction _reaction;
 
         int updateDelay = 1000;
-        public AppCore(IDistanceGetter distanceGetter, IReaction reaction)
+        public AppCore(IDistanceSensor  distanceGetter, IReaction reaction)
         {
             _distanceGetter = distanceGetter;
             _reaction = reaction;
         }
 
-        public async Task Start()
+        public async Task StartAsync()
         {
             while(true)
             {
@@ -27,6 +27,8 @@ namespace ISA_2
         {
             float distance = _distanceGetter.GetDistance();
             _reaction.SetDistance(distance);
+
+            
         }
     }
 }

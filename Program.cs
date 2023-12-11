@@ -7,11 +7,11 @@ namespace ISA_2
         static void Main(string[] args)
         {
 
-            IDistanceGetter distanceGetter = new DistanceGetterTest(40);
+            IDistanceSensor distanceSensor = new DistanceGetterTest(40);
             IReaction reaction = new ReactionStandard();
 
-            AppCore core = new AppCore(distanceGetter, reaction);
-            core.Start().GetAwaiter().GetResult();
+            AppCore core = new AppCore(distanceSensor, reaction);
+            core.StartAsync().GetAwaiter().GetResult();
         }
 
         public static float Map(float value, float low, float high, float low2 = 0, float high2 = 1)

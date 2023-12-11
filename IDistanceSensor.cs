@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ISA_2
 {
-    public interface IDistanceGetter
+    public interface IDistanceSensor
     {
         float GetDistance();
     }
