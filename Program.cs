@@ -1,4 +1,6 @@
-﻿using ISA_2.Test;
+﻿using System;
+using Emgu.CV;
+using ISA_2.ImageProcessing;
 
 namespace ISA_2
 {
@@ -6,11 +8,17 @@ namespace ISA_2
     {
         static void Main(string[] args)
         {
+            VideoCapture videoCapture = new VideoCapture(0);
+            videoCapture.Start();
 
-            IDistanceSensor distanceSensor = new DistanceGetterTest(40);
+            IImageSource imageSource = new ImageSourceVideoCapture(videoCapture);
+
+            //IImageProcessor imageProcessor = new ImageProcessorHaarCascade();
+            IImageProcessor imageProcessor = new ImageProcessorKeyPoints(videoCapture.Width, videoCapture.Height);
+            IDistanceSensor distanceSensor = new DistanceSensorCamera(imageProcessor, imageSource);
             IReaction reaction = new ReactionStandard();
 
-            AppCore core = new AppCore(distanceSensor, reaction);
+            AppCore core = new AppCore(distanceSensor, reaction, imageSource);
             core.StartAsync().GetAwaiter().GetResult();
         }
 

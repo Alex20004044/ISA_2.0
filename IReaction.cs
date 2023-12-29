@@ -6,6 +6,7 @@ namespace ISA_2
 {
     public interface IReaction
     {
-        void SetDistance(float distance);
+        void SetAlarmDistance(float distance);
+        void ProcessDistance(float distance);
     }
 }

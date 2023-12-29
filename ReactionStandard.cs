@@ -6,20 +6,18 @@ namespace ISA_2
 {
     public class ReactionStandard : IReaction
     {
-        float _minDistance = 30;
-        float _alarmDistance = 60;
+        float _alarmDistance = 40;
 
-        int _beepDuration = 100;
-        int _beepMaxFrequency = 20000;
-        int _beepMinFrequency = 404;
-
-        float _distance;
-
-        public void SetDistance(float distance)
+        public void ProcessDistance(float distance)
         {
-            Console.WriteLine($"Distance: {distance}");
+            Console.WriteLine($"Дистанция: {distance}");
             if (distance <= _alarmDistance)
                 React();
+        }
+
+        public void SetAlarmDistance(float distance)
+        {
+            _alarmDistance = distance;
         }
 
         void React()

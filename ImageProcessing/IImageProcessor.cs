@@ -5,6 +5,6 @@ namespace ISA_2
 {
     public interface IImageProcessor
     {
-        float MeasureFaceAndDrawBorders(Mat imageMat);
+        float MeasureFaceAndDrawBorders(Mat image);
     }
 }
