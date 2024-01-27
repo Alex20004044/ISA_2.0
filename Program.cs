@@ -13,8 +13,8 @@ namespace ISA_2
 
             IImageSource imageSource = new ImageSourceVideoCapture(videoCapture);
 
-            //IImageProcessor imageProcessor = new ImageProcessorHaarCascade();
-            IImageProcessor imageProcessor = new ImageProcessorKeyPoints(videoCapture.Width, videoCapture.Height);
+            IImageProcessor imageProcessor = new ImageProcessorHaarCascade();
+            //IImageProcessor imageProcessor = new ImageProcessorKeyPoints(videoCapture.Width, videoCapture.Height);
             IDistanceSensor distanceSensor = new DistanceSensorCamera(imageProcessor, imageSource);
             IReaction reaction = new ReactionStandard();
 

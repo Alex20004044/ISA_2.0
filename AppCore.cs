@@ -37,7 +37,6 @@ namespace ISA_2
 
             Console.WriteLine($"Расположитесь на расстоянии {calibrateDist} см и нажмите Enter для калибровки");
             Mat frame;
-
             while (true)
             {
                 frame = _imageSource.GetImage();
@@ -48,8 +47,11 @@ namespace ISA_2
                 int key = CvInvoke.WaitKey(1);
                 if (key == (int)ConsoleKey.Enter)
                     break;
+                else
+                    frame.Dispose();
             }
             sensorCamera.Calibrate(frame, calibrateDist, out var calibrateCoefficient);
+            frame.Dispose();
 
             Console.WriteLine($"Калибровка выполнена успешно. Коэффициент: {calibrateCoefficient}");
 
@@ -65,9 +67,9 @@ namespace ISA_2
 
                 if (isShowCameraOutput)
                 {
-                    frame = _imageSource.GetImage();
-                    distance = sensorCamera.GetDistanceFromImageAndDrawBorders(frame);
-                    CvInvoke.Imshow(WindowName, frame);
+                    using var frame2 = _imageSource.GetImage();
+                    distance = sensorCamera.GetDistanceFromImageAndDrawBorders(frame2);
+                    CvInvoke.Imshow(WindowName, frame2);
                 }
                 else
                     distance = _distanceSensor.GetDistance();
