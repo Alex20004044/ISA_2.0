@@ -1,5 +1,6 @@
 ﻿using Emgu.CV;
 using ISA_2.ImageProcessing;
+using ISA_2.ImageProcessing.ImageProcessors;
 
 namespace ISA_2
 {

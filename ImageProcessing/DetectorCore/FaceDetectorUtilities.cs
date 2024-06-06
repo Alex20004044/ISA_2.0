@@ -26,7 +26,7 @@ namespace ISA_2.ImageProcessing.DetectorCore
                 CvInvoke.Circle(imageMat, new Point((int)MathF.Round(p.X), (int)MathF.Round(p.Y)), 2, Blue);
             }
         }        
-        public static void DrawFacePoints(Mat imageMat, params Point[] points)
+        public static void DrawPoints(Mat imageMat, params Point[] points)
         {
             foreach (var x in points)
             {

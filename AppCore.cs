@@ -41,12 +41,21 @@ namespace ISA_2
             {
                 frame = _imageSource.GetImage();
 
-                sensorCamera.GetDistanceFromImageAndDrawBorders(frame);
+                var dist = sensorCamera.GetDistanceFromImageAndDrawBorders(frame);
                 CvInvoke.Imshow("ISA 2.0", frame);
 
                 int key = CvInvoke.WaitKey(1);
                 if (key == (int)ConsoleKey.Enter)
-                    break;
+                {
+                    if(dist > 0 && !float.IsInfinity(dist))
+                        break;
+                    else
+                    {
+                        Console.WriteLine("На изображении не найдено лицо. " +
+                            $"Расположитесь в поле зрения камеры на расстоянии {calibrateDist} см и нажмите Enter для калибровки");
+                        frame.Dispose();
+                    }
+                }
                 else
                     frame.Dispose();
             }
